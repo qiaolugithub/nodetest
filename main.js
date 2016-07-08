@@ -47,6 +47,7 @@ event.on('some_event', function() {
         event.emit('some_event');
     }, 1000);
 */
+/*
 
 buf = new Buffer(256);
 console.log(buf);
@@ -83,4 +84,48 @@ if(result < 0) {
     console.log(buffer1 + " 与 " + buffer2 + "相同");
 }else {
     console.log(buffer1 + " 在 " + buffer2 + "之后");
-}
+}*/
+
+/*
+
+process.on('exit', function(code) {
+
+    // 以下代码永远不会执行
+    setTimeout(function() {
+        console.log("该代码不会执行");
+    }, 0);
+
+    console.log('退出码为:', code);
+});
+console.dir(process.version);
+console.log("程序执行结束");*/
+/*
+
+var fs = require("fs");
+
+console.log("准备删除目录 /temp/test");
+fs.rmdir("/temp/test",function(err){
+    if (err) {
+        return console.error(err);
+    }
+    console.log("读取 /temp 目录");
+    fs.readdir("/temp/",function(err, files){
+        if (err) {
+            return console.error(err);
+        }
+        files.forEach( function (file){
+            console.log( file );
+        });
+    });
+});*/
+
+
+
+var http = require('http');
+var url = require('url');
+var util = require('util');
+
+http.createServer(function(req, res){
+    res.writeHead(200, {'Content-Type': 'text/plain'});
+    res.end(util.inspect(url.parse(req.url, true)));
+}).listen(3000);
